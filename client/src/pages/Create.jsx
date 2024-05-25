@@ -10,7 +10,7 @@ const Create = () => {
   const navigate = useNavigate()
 const handleSubmit= (e)=>{
   e.preventDefault()
-  axios.post('http://localhost:3000/create',values)
+  axios.post(`${process.env.REACT_APP_URL}/create`,values)
   .then(res=>{console.log(res)
     navigate('/')
   })

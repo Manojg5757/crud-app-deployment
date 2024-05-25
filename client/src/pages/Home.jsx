@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(()=>{
     const fetchData = async ()=>{
        try {
-        const res = await axios.get("http://localhost:3000/user")
+        const res = await axios.get(`${process.env.REACT_APP_URL}/user`)
         setUser(res.data)
        } catch (error) {
         console.log(error)
@@ -19,7 +19,7 @@ const Home = () => {
   },[])
 
   const handleDelete =(id)=>{
-      axios.delete("http://localhost:3000/delete/"+id)
+      axios.delete(`${process.env.REACT_APP_URL}/delete/`+id)
       .then(res=>{
         location.reload()
       }).catch(err=>console.log(err))

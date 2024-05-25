@@ -13,7 +13,7 @@ const Edit = () => {
 console.log(values)
   useEffect(()=>{
     const fetchdata = async()=>{
-      const res = await axios.get("http://localhost:3000/edit/"+id)
+      const res = await axios.get(`${process.env.REACT_APP_URL}/edit/`+id)
       setValues(res.data)
     }
     fetchdata()
@@ -21,7 +21,7 @@ console.log(values)
   
   const handleSubmit=(e)=>{
     e.preventDefault()
-    axios.put("http://localhost:3000/edit/"+id,values)
+    axios.put(`${process.env.REACT_APP_URL}/edit/`+id,values)
     .then(res=>{
       console.log(res)
       navigate('/')
