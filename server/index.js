@@ -3,12 +3,15 @@ import express from 'express';
 import cors from 'cors';
 import userModel from './model/userModel.js';
 import dotenv from 'dotenv';
+import swaggerUI from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/docs",swaggerUI.serve,swaggerUI.setup(swaggerJSDoc))
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log('Connected to MongoDB'))
